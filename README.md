@@ -1,4 +1,78 @@
-# VESC firmware
+<!---
+Basic .md-file guide from Ole: https://github.com/omhland/omhland
+-->
+
+# TTK4551 - Project: Propeller Controller VESC
+
+This repository is part of TTK8 student project and contains the custom firmware for VESC, for analyzation of the Real-Time Operative System (RTOS) built (with ChibiOS) into the VESC system. It is based on the VESC (Vedder's ESC) and is an open-source Electronic Speed Controller (ESC) project made by Benjamin Vedder, link to [vesc-project](www.vesc-project.com).
+
+<b> VESC Firmware Version:</b> 5.2
+
+<b> VESC Hardware Version:</b> VESC 6 MkV
+
+## Contents
+1. [Hardware](#hardware)
+1. [VESC original README](#originalreadme)
+
+
+## Hardware <a name="hardware"></a>
+
+The hardware for propeller controller:
+- Alva or Axi BLDC motor
+- VESC motor controller
+- AMT102-V / AMT103-V Encoder
+
+
+### VESC Hardware
+
+The VESC hardware version for this project is the <b>VESC 6 MkV</b>.
+<details>
+<summary><b>VESC 6 MkV figure</b></summary>
+
+![](./README_files/vesc_6_mkv_figure.PNG)
+
+</details>
+
+<details>
+<summary><b>Technical Information</b></summary>
+
+VESC 6 Mkv [store link](https://trampaboards.com/1-x-vesc-6-mkv-200-tax-each-p-27529.html):
+- Voltage: 11.1V - 60V (Safe for 3S to 12S LiPo batteries)
+- Voltage spikes may not exceed 60V!
+- Current: Continuous 80A, Burst 120A. (Values depends on the temperature and air circulation)
+- 5V 1A output and 3.3V 0.5A output for external electronics
+- Modes: DC, BLDC, FOX (sinusoidal)
+- Supported sensors: ABI, HALL, AS5047
+- L75mm x W70mm x H18mm
+- XT90 Cable ~L70mm
+- 4mm Gold Plated Bullect Connector cable L270mm
+
+</details>
+
+### Custom Firmware File Structure
+
+TODO
+
+## Overview of VESC Firmware <a name="overviewvescfirmware"></a>
+TODO
+
+### File Structure
+TODO
+The file structure of the VESC.
+
+
+### Threads Overview
+TODO
+
+The Real-Time Operative System (RTOS) in the VESC is implemented with the ChibiOS. A threads overview of the RTOS (ChibiOS) of the VESC.
+
+
+## VESC Original README <a name="originalreadme"></a>
+
+<details>
+<summary><b> VESC Original README</b></summary>
+
+# Notes from original README file (VESC firmware)
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Travis CI Status](https://travis-ci.com/vedderb/bldc.svg?branch=master)](https://travis-ci.com/vedderb/bldc)
@@ -188,3 +262,7 @@ Head to the [forums](https://vesc-project.com/forum) to get involved and improve
 ## License
 
 The software is released under the GNU General Public License version 3.0
+
+</details>
+
+
