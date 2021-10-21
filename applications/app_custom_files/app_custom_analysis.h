@@ -4,7 +4,7 @@
  * Created by:          Emil Jenssen
  * Modified by:         Emil Jenssen
  * Created:             16.10.2021
- * Last updated:        16.10.2021
+ * Last updated:        21.10.2021
  *
  */
 
@@ -47,14 +47,14 @@
 // Custom files
 #include "app_custom_plotter.h"
 #include "app_custom_commands.h"
-
+#include "app_custom_hall_sensor.h"
+#include "app_custom_indicator.h"
 
 // Variables
 volatile int custom_thread_priority = NORMALPRIO;
 
 // Functions
-double app_custom_get_sensor_val(void);
-double app_custom_get_sensor_val_voltage(void);
+
 
 #endif /* APP_CUSTOM_ANALYSIS_H_ */
 
