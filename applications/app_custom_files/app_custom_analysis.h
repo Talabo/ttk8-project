@@ -4,7 +4,7 @@
  * Created by:          Emil Jenssen
  * Modified by:         Emil Jenssen
  * Created:             16.10.2021
- * Last updated:        21.10.2021
+ * Last updated:        23.10.2021
  *
  */
 
@@ -25,6 +25,7 @@
 #include "mcpwm_foc.h"		// Motor Control FOC functions
 #include "encoder.h" 		// Encoder functions
 //#include "bms.h"			// Battery Management System (External BMS system)
+#include "mempools.h"		// Memory Pool, for access to memory in VESC
 
 #include "utils.h" 			// Utility functions
 #include "hw.h"				// Pin mapping for hardware
@@ -51,9 +52,12 @@
 #include "app_custom_indicator.h"
 
 // Variables
-volatile int custom_thread_priority = NORMALPRIO;
+
 
 // Functions
+void app_custom_set_thread_priority(int priority);
+int app_custom_get_thread_priority(void);
+
 
 
 #endif /* APP_CUSTOM_ANALYSIS_H_ */

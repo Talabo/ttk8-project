@@ -48,6 +48,8 @@ double app_custom_read_hall_voltage(bool is_5V);
 
 double app_custom_get_sensor_val(void);
 double app_custom_get_sensor_val_voltage(void);
+void app_custom_set_sensor_val(double x);
+void app_custom_set_sensor_val_voltage(double x);
 
 //void app_custom_hall_est_pos(void);
 

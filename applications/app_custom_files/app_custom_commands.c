@@ -4,7 +4,7 @@
  * Created by:          Emil Jenssen
  * Modified by:         Emil Jenssen
  * Created:             16.10.2021
- * Last updated:        16.10.2021
+ * Last updated:        23.10.2021
  *
  */
 
@@ -50,7 +50,7 @@ void app_custom_unregister_commands(void){
 void terminal_custom_get_thread_prority(int argc, const char **argv){
 	(void)argc;
 	(void)argv;
-	commands_printf("The thread priority is: ", custom_thread_priority);
+	commands_printf("The thread priority is: ", app_custom_get_thread_priority());
 }
 
 // Sets the thread priority of the analysis thread
@@ -65,7 +65,7 @@ void terminal_custom_set_thread_prority(int argc, const char **argv){
 			return;
 		}
 
-		custom_thread_priority = d;
+		app_custom_set_thread_priority(d);
 		commands_printf("The thread priority is set to %d", d);
 
 	}else{

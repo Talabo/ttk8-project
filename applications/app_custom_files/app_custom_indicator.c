@@ -12,10 +12,6 @@
 
 // Variables
 
-// Indicator Pin (COMM PORT: SCK ADC1 pin (PA5)) for HW: VESC 6 MkV
-#define CUSTOM_INDICATOR_GPIO	GPIOA
-#define CUSTOM_INDICATOR_PIN	5
-
 // Functions
 
 // Initialize the indicator

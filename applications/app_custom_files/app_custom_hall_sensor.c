@@ -20,7 +20,9 @@ static double custom_hall_sensor_val_voltage = 0.0;
 
 // Initialize the hall-effect sensor
 void app_custom_hall_init(void){
-	EXTI_InitTypeDef   EXTI_InitStructure;
+	// TODO: For interrupt functionality
+	//EXTI_InitTypeDef   EXTI_InitStructure;
+
 
 	// Set the Hall Sensor Pin as a analog input
 	// Already defined correctly in original firmware, in hwconf/hw_60.c (HW: VESC 6 MkV)
@@ -28,8 +30,14 @@ void app_custom_hall_init(void){
 	// Alternative, set the Hall Sensor Pin as a digital input pull-down
 	// This will maybe eliminate the need for a voltage divider,
 	// since the pin is 5V tolerant (but the ADC for analog is not)
+
+	// Use it as a digital input?
 	//palSetPadMode(CUSTOM_HALL_GPIO, CUSTOM_HALL_PIN, PAL_MODE_INPUT_PULLDOWN);
-	palSetPadMode(CUSTOM_HALL_GPIO, CUSTOM_HALL_PIN, PAL_MODE_ALTERNATE(HW_CUSTOM_HALL_TIM_AF));
+	// or as analog input?!
+	palSetPadMode(CUSTOM_HALL_GPIO, CUSTOM_HALL_PIN, PAL_MODE_INPUT_ANALOG);
+
+	// TODO Replace to this, for interrupt functionality
+	//palSetPadMode(CUSTOM_HALL_GPIO, CUSTOM_HALL_PIN, PAL_MODE_ALTERNATE(HW_CUSTOM_HALL_TIM_AF));
 
 	// TODO
 }

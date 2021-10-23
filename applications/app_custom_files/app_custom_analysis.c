@@ -6,7 +6,7 @@
  * Created by:          Emil Jenssen
  * Modified by:         Emil Jenssen
  * Created:             12.10.2021
- * Last updated:        21.10.2021
+ * Last updated:        23.10.2021
  *
  */
 
@@ -24,6 +24,17 @@ static void app_custom_create_analysis_thread(void);
 // Thread variables
 static volatile bool stop_now = true;
 static volatile bool is_running = false;
+static volatile int custom_thread_priority = NORMALPRIO;
+
+
+void app_custom_set_thread_priority(int priority){
+	custom_thread_priority = priority;
+}
+
+int app_custom_get_thread_priority(void){
+	return custom_thread_priority;
+}
+
 
 // Create the custom analysis thread
 static void app_custom_create_analysis_thread(void){
@@ -45,6 +56,8 @@ void app_custom_start(void){
 	app_custom_hall_init();
 	// Initialize the indicator
 	app_custom_indicator_init();
+	// Initialize the experiment plotter
+	custom_experiment_plots_init();
 
 	// Start Thread
 	stop_now = false;
@@ -106,6 +119,8 @@ static THD_FUNCTION(custom_analysis_thread, arg){
 		// Read hall sensor voltage (true is for 5V, hardware spesific)
 		app_custom_set_sensor_val_voltage(app_custom_read_hall_voltage(true));
 
+		// Continuously plot the experiment plotter
+		custom_experiment_plots();
 
 		// TODO
 
