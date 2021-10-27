@@ -115,9 +115,9 @@ static THD_FUNCTION(custom_analysis_thread, arg){
 
 		// Run the thread logic here //
 
-		app_custom_set_sensor_val(app_custom_read_hall());
-		// Read hall sensor voltage (false is for 3.3V, hardware spesific)
-		app_custom_set_sensor_val_voltage(app_custom_read_hall_voltage(false));
+		// Read and set the sensor state
+		app_custom_set_sensor_state(app_custom_read_hall_state());
+
 
 		// Continuously plot the experiment plotter
 		custom_experiment_plots();

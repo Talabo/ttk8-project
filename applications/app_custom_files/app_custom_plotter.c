@@ -45,9 +45,9 @@ void custom_experiment_plots_init(void){
 	// Exit function
 	//if (!custom_get_custom_plot()) return;
 
-	commands_init_plot("Sample", "ADC Value");
-	commands_plot_add_graph("Hall raw"); // graph 1
-	commands_plot_add_graph("Hall 3.3v logic"); // graph 2
+	commands_init_plot("Sample", "I/O state");
+	commands_plot_add_graph("Hall sensor state"); // graph 1
+	//commands_plot_add_graph("Hall 3.3v logic"); // graph 2
 	//commands_plot_add_graph("PID set point"); // graph 3
 	//commands_plot_add_graph("PID error"); // graph 4
 	//commands_plot_add_graph("PID position mapped"); // graph 5
@@ -62,11 +62,11 @@ void custom_experiment_plots(void){
 
 	// graph 1 (Hall sensor Raw value)
 	commands_plot_set_graph(0);
-	commands_send_plot_points(custom_samp, app_custom_get_sensor_val());
+	commands_send_plot_points(custom_samp, app_custom_get_sensor_state());
 
 	// graph 2 ((Hall sensor, 5V logic)
-	commands_plot_set_graph(1);
-	commands_send_plot_points(custom_samp, app_custom_get_sensor_val_voltage());
+	//commands_plot_set_graph(1);
+	//commands_send_plot_points(custom_samp, VALUE);
 
 	// graph 3 (PID position set point)
 	//commands_plot_set_graph(2);
