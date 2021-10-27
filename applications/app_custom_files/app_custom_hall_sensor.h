@@ -4,7 +4,7 @@
  * Created by:          Emil Jenssen
  * Modified by:         Emil Jenssen
  * Created:             21.10.2021
- * Last updated:        27.10.2021
+ * Last updated:        28.10.2021
  *
  */
 
@@ -44,20 +44,20 @@ void app_custom_hall_init(void);
 void app_custom_hall_deinit(void);
 void app_custom_hall_reset(void);
 
-
-
 // Only works if the pin is defined as DIGITAL (PULLUP)
 bool app_custom_read_hall_state(void);
 bool app_custom_get_sensor_state(void);
 void app_custom_set_sensor_state(bool x);
 
 // Only works if the pin is defined as ANALOG
+/*
 double app_custom_read_hall_ADC(void);
 double app_custom_read_hall_voltage(bool is_5V);
 double app_custom_get_sensor_adc_value(void);
 double app_custom_get_sensor_adc_voltage(void);
 void app_custom_set_sensor_adc_value(double x);
 void app_custom_set_sensor_adc_voltage(double x);
+*/
 
 //void app_custom_hall_est_pos(void);
 

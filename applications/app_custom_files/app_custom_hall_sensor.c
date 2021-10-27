@@ -4,7 +4,7 @@
  * Created by:          Emil Jenssen
  * Modified by:         Emil Jenssen
  * Created:             21.10.2021
- * Last updated:        27.10.2021
+ * Last updated:        28.10.2021
  *
  */
 
@@ -13,8 +13,10 @@
 
 
 // Variables
+/*
 static double custom_hall_sensor_val = 0.0;
 static double custom_hall_sensor_val_voltage = 0.0;
+*/
 static bool custom_hall_sensor_state = false;
 // Functions
 
@@ -55,6 +57,19 @@ bool app_custom_read_hall_state(void){
 	return (palReadPad(CUSTOM_HALL_GPIO, CUSTOM_HALL_PIN) == PAL_HIGH);
 }
 
+
+// Only works if the pin is defined as DIGITAL
+bool app_custom_get_sensor_state(void){
+	return custom_hall_sensor_state;
+}
+
+// Only works if the pin is defined as DIGITAL
+void app_custom_set_sensor_state(bool x){
+	custom_hall_sensor_state = x;
+}
+
+
+/*
 // Reads hall-effect sensor data as ADC (analog value)
 // Only works if the pin is defined as ANALOG
 double app_custom_read_hall_ADC(void){
@@ -72,16 +87,6 @@ double app_custom_read_hall_voltage(bool is_5V){
 		// V_REG = 3.3
 		return (double)ADC_VOLTS(CUSTOM_HALL_ADC_INDEX);
 	}
-}
-
-// Only works if the pin is defined as DIGITAL
-bool app_custom_get_sensor_state(void){
-	return custom_hall_sensor_state;
-}
-
-// Only works if the pin is defined as DIGITAL
-void app_custom_set_sensor_state(bool x){
-	custom_hall_sensor_state = x;
 }
 
 // Only works if the pin is defined as ANALOG
@@ -103,6 +108,8 @@ void app_custom_set_sensor_adc_value(double x){
 void app_custom_set_sensor_adc_voltage(double x){
 	custom_hall_sensor_val_voltage = x;
 }
+*/
+
 
 /*
 // Estimation of position based on estimator and hall-effect sensor
