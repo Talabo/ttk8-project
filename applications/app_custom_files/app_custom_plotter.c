@@ -4,7 +4,7 @@
  * Created by:          Emil Jenssen
  * Modified by:         Emil Jenssen
  * Created:             16.10.2021
- * Last updated:        16.10.2021
+ * Last updated:        27.10.2021
  *
  */
 
@@ -47,7 +47,7 @@ void custom_experiment_plots_init(void){
 
 	commands_init_plot("Sample", "ADC Value");
 	commands_plot_add_graph("Hall raw"); // graph 1
-	commands_plot_add_graph("Hall 5v logic"); // graph 2
+	commands_plot_add_graph("Hall 3.3v logic"); // graph 2
 	//commands_plot_add_graph("PID set point"); // graph 3
 	//commands_plot_add_graph("PID error"); // graph 4
 	//commands_plot_add_graph("PID position mapped"); // graph 5
