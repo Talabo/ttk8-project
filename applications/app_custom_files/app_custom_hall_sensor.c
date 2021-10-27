@@ -4,7 +4,7 @@
  * Created by:          Emil Jenssen
  * Modified by:         Emil Jenssen
  * Created:             21.10.2021
- * Last updated:        21.10.2021
+ * Last updated:        27.10.2021
  *
  */
 
@@ -26,15 +26,7 @@ void app_custom_hall_init(void){
 
 	// Set the Hall Sensor Pin as a analog input
 	// Already defined correctly in original firmware, in hwconf/hw_60.c (HW: VESC 6 MkV)
-	//palSetPadMode(CUSTOM_HALL_GPIO, CUSTOM_HALL_PIN, PAL_MODE_INPUT_ANALOG);
-	// Alternative, set the Hall Sensor Pin as a digital input pull-down
-	// This will maybe eliminate the need for a voltage divider,
-	// since the pin is 5V tolerant (but the ADC for analog is not)
-
-	// Use it as a digital input?
-	//palSetPadMode(CUSTOM_HALL_GPIO, CUSTOM_HALL_PIN, PAL_MODE_INPUT_PULLDOWN);
-	// or as analog input?!
-	palSetPadMode(CUSTOM_HALL_GPIO, CUSTOM_HALL_PIN, PAL_MODE_INPUT_ANALOG);
+	palSetPadMode(CUSTOM_HALL_GPIO, CUSTOM_HALL_PIN, PAL_MODE_INPUT_PULLUP);
 
 	// TODO Replace to this, for interrupt functionality
 	//palSetPadMode(CUSTOM_HALL_GPIO, CUSTOM_HALL_PIN, PAL_MODE_ALTERNATE(HW_CUSTOM_HALL_TIM_AF));
