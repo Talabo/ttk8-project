@@ -2,9 +2,7 @@
  * Custom firmware
  *
  * Created by:          Emil Jenssen
- * Modified by:         Emil Jenssen
- * Created:             21.10.2021
- * Last updated:        28.10.2021
+ * Last updated:        03.11.2021
  *
  */
 
@@ -22,6 +20,7 @@
 // Timer for PA6 (See datasheet for STM32F40xxx, Table 9. Alternate function mapping)
 #define HW_CUSTOM_HALL_TIM				TIM13
 #define HW_CUSTOM_HALL_TIM_AF			GPIO_AF_TIM13
+#define HW_CUSTOM_TIM_CLK_EN()          RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM13, ENABLE)
 
 // TODO
 #define HW_CUSTOM_HALL_TIM_CLK_EN()		//RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE)

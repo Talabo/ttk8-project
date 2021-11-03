@@ -4,9 +4,7 @@
  * This custom app is used for analyzing the RTOS (ChibiOS) system in the VESC firmware.
  *
  * Created by:          Emil Jenssen
- * Modified by:         Emil Jenssen
- * Created:             12.10.2021
- * Last updated:        23.10.2021
+ * Last updated:        03.11.2021
  *
  */
 

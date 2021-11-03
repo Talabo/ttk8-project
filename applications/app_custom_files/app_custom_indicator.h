@@ -2,9 +2,7 @@
  * Custom firmware
  *
  * Created by:          Emil Jenssen
- * Modified by:         Emil Jenssen
- * Created:             21.10.2021
- * Last updated:        21.10.2021
+ * Last updated:        03.11.2021
  *
  */
 
