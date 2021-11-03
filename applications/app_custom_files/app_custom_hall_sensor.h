@@ -18,20 +18,18 @@
 #define CUSTOM_HALL_ADC_INDEX	ADC_IND_EXT2
 
 // Timer for PA6 (See datasheet for STM32F40xxx, Table 9. Alternate function mapping)
+/*
 #define HW_CUSTOM_HALL_TIM				TIM13
 #define HW_CUSTOM_HALL_TIM_AF			GPIO_AF_TIM13
 #define HW_CUSTOM_TIM_CLK_EN()          RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM13, ENABLE)
-
-// TODO
-#define HW_CUSTOM_HALL_TIM_CLK_EN()		//RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE)
-#define HW_CUSTOM_HALL_EXTI_PORTSRC		//EXTI_PortSourceGPIOC
-#define HW_CUSTOM_HALL_EXTI_PINSRC		//EXTI_PinSource8
-#define HW_CUSTOM_HALL_EXTI_CH			//EXTI9_5_IRQn
-#define HW_CUSTOM_HALL_EXTI_LINE		//EXTI_Line8
+#define HW_CUSTOM_HALL_EXTI_PORTSRC		EXTI_PortSourceGPIOA
+#define HW_CUSTOM_HALL_EXTI_PINSRC		EXTI_PinSource5
+#define HW_CUSTOM_HALL_EXTI_CH			EXTI9_5_IRQn
+#define HW_CUSTOM_HALL_EXTI_LINE		EXTI_Line5
 #define HW_CUSTOM_HALL_EXTI_ISR_VEC		//EXTI9_5_IRQHandler
-#define HW_CUSTOM_HALL_TIM_ISR_CH		//TIM3_IRQn
-#define HW_CUSTOM_HALL_TIM_ISR_VEC		//TIM3_IRQHandler
-
+#define HW_CUSTOM_HALL_TIM_ISR_CH		//TIM13_IRQn
+#define HW_CUSTOM_HALL_TIM_ISR_VEC		//TIM13_IRQHandler
+*/
 
 
 // Define the voltage level (High level) of the output from sensor
