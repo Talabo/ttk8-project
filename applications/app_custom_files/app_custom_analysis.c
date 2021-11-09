@@ -4,7 +4,7 @@
  * This custom app is used for analyzing the RTOS (ChibiOS) system in the VESC firmware.
  *
  * Created by:          Emil Jenssen
- * Last updated:        03.11.2021
+ * Last updated:        09.11.2021
  *
  */
 
@@ -24,6 +24,12 @@ static volatile bool stop_now = true;
 static volatile bool is_running = false;
 static volatile int custom_thread_priority = NORMALPRIO;
 
+// Variables
+uint32_t analysis_time_start;
+bool analysis_time_taker;
+int analysis_time_sample;
+float analysis_time_total;
+float analysis_time_average;
 
 void app_custom_set_thread_priority(int priority){
 	custom_thread_priority = priority;
@@ -31,6 +37,14 @@ void app_custom_set_thread_priority(int priority){
 
 int app_custom_get_thread_priority(void){
 	return custom_thread_priority;
+}
+
+void app_custom_set_analysis_time_taker(bool x){
+	analysis_time_taker = x;
+}
+
+bool app_custom_get_tanalysis_time_taker(void){
+	return analysis_time_taker;
 }
 
 
@@ -56,6 +70,12 @@ void app_custom_start(void){
 	app_custom_indicator_init();
 	// Initialize the experiment plotter
 	custom_experiment_plots_init();
+
+	analysis_time_taker = false;
+	analysis_time_start = 0.0;
+	analysis_time_sample = 0;
+	analysis_time_total = 0.0;
+	analysis_time_average = 0.0;
 
 	// Start Thread
 	stop_now = false;
@@ -113,6 +133,16 @@ static THD_FUNCTION(custom_analysis_thread, arg){
 
 		// Run the thread logic here //
 
+		// Take the time elapsed
+		if(analysis_time_taker){
+			float analysis_time_elapsed = timer_seconds_elapsed_since(analysis_time_start)/1000000.0;
+			commands_printf("Time elapsed while NOT active: %lf us", timer_seconds_elapsed_since(analysis_time_elapsed));
+			analysis_time_sample++;
+			analysis_time_total = analysis_time_total + analysis_time_elapsed;
+			analysis_time_average = analysis_time_total/analysis_time_sample;
+			commands_printf("Time elapsed while NOT active: %lf us", analysis_time_average);
+		}
+
 		// Read and set the sensor state
 		app_custom_set_sensor_state(app_custom_read_hall_state());
 
@@ -123,6 +153,12 @@ static THD_FUNCTION(custom_analysis_thread, arg){
 		// TODO
 
 
+
+
+		if(analysis_time_taker){
+			// start timer
+			analysis_time_start = timer_time_now();
+		}
 
 
 		// Put the thread to sleep for 10 ms

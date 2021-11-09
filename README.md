@@ -2,28 +2,20 @@
 Basic .md-file guide from Ole: https://github.com/omhland/omhland
 -->
 
-# TTK4551 - Project: Propeller Controller VESC
+# TTK8 - Project: Delay and thread handling of a real-time operative system (ChibiOS) for sensor reading in the VESC environment
 
-This repository is part of TTK8 student project and contains the custom firmware for VESC, for analyzation of the Real-Time Operative System (RTOS) built (with ChibiOS) into the VESC system. It is based on the VESC (Vedder's ESC) and is an open-source Electronic Speed Controller (ESC) project made by Benjamin Vedder, link to [vesc-project](www.vesc-project.com).
+This repository is part of TTK8 student project and contains a custom firmware version for VESC, for analysation of the Real-Time Operative System (RTOS) built (with ChibiOS) into the VESC system. It is based on the VESC (Vedder's ESC) and is an open-source Electronic Speed Controller (ESC) project made by Benjamin Vedder, link to [vesc-project](www.vesc-project.com).
 
 The project is designed to evaluate which approach is best for implementing reading of a hall-effect sensor in a electric motor as an index pulse. The evaluation will be based on delay and thread handling in the ChibiOS framework and the VESC environment.
 
 <b> VESC Firmware Version:</b> 5.2
+
 <b> VESC Tool Version:</b> 3.0
+
 <b> VESC Hardware Version:</b> VESC 6 MkV
 
-## Contents
-1. [Threads Overview](#vescthreadoverview)
-1. [VESC original README](#originalreadme)
 
-
-## Threads Overview  <a name="vescthreadoverview"></a>
-TODO
-
-The Real-Time Operative System (RTOS) in the VESC is implemented with the ChibiOS. A threads overview of the RTOS (ChibiOS) of the VESC.
-
-
-## VESC Original README <a name="originalreadme"></a>
+## VESC Original README
 
 <details>
 <summary><b> VESC Original README</b></summary>

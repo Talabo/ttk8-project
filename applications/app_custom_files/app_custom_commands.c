@@ -2,7 +2,7 @@
  * Custom firmware
  *
  * Created by:          Emil Jenssen
- * Last updated:        03.11.2021
+ * Last updated:        09.11.2021
  *
  */
 
@@ -15,7 +15,19 @@
 void app_custom_register_commands(void){
 	// Thread Priority
 	terminal_register_command_callback(
-			"custom_debug_off",
+			"analysis_timer_off",
+			"Set the analysis timer OFF",
+			0,
+			terminal_custom_analysis_timer_off);
+
+	terminal_register_command_callback(
+			"analysis_timer_on",
+			"Set the analysis timer ON",
+			0,
+			terminal_custom_analysis_timer_on);
+
+	terminal_register_command_callback(
+			"custom_get_thread_priority",
 			"Get the thread priority for the custom analysis thread.",
 			0,
 			terminal_custom_get_thread_prority);
@@ -28,14 +40,16 @@ void app_custom_register_commands(void){
 
 	// Updates thread settings by restarting all apps
 	terminal_register_command_callback(
-				"custom_update_thread_settings",
-				"Updates the thread settings by restarting all threads.",
-				0,
-				terminal_custom_update_thread_settings);
+			"custom_update_thread_settings",
+			"Updates the thread settings by restarting all threads.",
+			0,
+			terminal_custom_update_thread_settings);
 }
 
 // Unregister custom commands for callbacks
 void app_custom_unregister_commands(void){
+	terminal_unregister_callback(terminal_custom_analysis_timer_off);
+	terminal_unregister_callback(terminal_custom_analysis_timer_on);
 	terminal_unregister_callback(terminal_custom_get_thread_prority);
 	terminal_unregister_callback(terminal_custom_set_thread_prority);
 	terminal_unregister_callback(terminal_custom_update_thread_settings);
@@ -44,11 +58,29 @@ void app_custom_unregister_commands(void){
 
 // Callback functions for the terminal command with arguments.
 
+
+// Gets the thread priority of the analysis thread
+void terminal_custom_analysis_timer_off(int argc, const char **argv){
+	(void)argc;
+	(void)argv;
+	app_custom_set_analysis_time_taker(false);
+	commands_printf("The analysis time taker is OFF");
+
+}
+
+// Gets the thread priority of the analysis thread
+void terminal_custom_analysis_timer_on(int argc, const char **argv){
+	(void)argc;
+	(void)argv;
+	app_custom_set_analysis_time_taker(true);
+	commands_printf("The analysis time taker is ON");
+}
+
 // Gets the thread priority of the analysis thread
 void terminal_custom_get_thread_prority(int argc, const char **argv){
 	(void)argc;
 	(void)argv;
-	commands_printf("The thread priority is: ", app_custom_get_thread_priority());
+	commands_printf("The thread priority is: %d ", app_custom_get_thread_priority());
 }
 
 // Sets the thread priority of the analysis thread
