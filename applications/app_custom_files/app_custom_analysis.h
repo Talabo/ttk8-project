@@ -58,7 +58,7 @@ int app_custom_get_thread_priority(void);
 
 void app_custom_set_analysis_time_taker(bool x);
 bool app_custom_get_tanalysis_time_taker(void);
-
+void app_custom_reset_analysis_timer(void);
 
 
 

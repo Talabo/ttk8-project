@@ -15,14 +15,14 @@
 void app_custom_register_commands(void){
 	// Thread Priority
 	terminal_register_command_callback(
-			"analysis_timer_off",
+			"custom_analysis_timer_off",
 			"Set the analysis timer OFF",
 			0,
 			terminal_custom_analysis_timer_off);
 
 	terminal_register_command_callback(
-			"analysis_timer_on",
-			"Set the analysis timer ON",
+			"custom_analysis_timer_on",
+			"Set the analysis timer ON and resets the timer",
 			0,
 			terminal_custom_analysis_timer_on);
 
@@ -73,6 +73,7 @@ void terminal_custom_analysis_timer_on(int argc, const char **argv){
 	(void)argc;
 	(void)argv;
 	app_custom_set_analysis_time_taker(true);
+	app_custom_reset_analysis_timer();
 	commands_printf("The analysis time taker is ON");
 }
 

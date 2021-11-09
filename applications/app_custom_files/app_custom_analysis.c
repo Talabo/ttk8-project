@@ -28,8 +28,8 @@ static volatile int custom_thread_priority = NORMALPRIO;
 uint32_t analysis_time_start;
 bool analysis_time_taker;
 int analysis_time_sample;
-float analysis_time_total;
-float analysis_time_average;
+double analysis_time_total;
+double analysis_time_average;
 
 void app_custom_set_thread_priority(int priority){
 	custom_thread_priority = priority;
@@ -47,6 +47,12 @@ bool app_custom_get_tanalysis_time_taker(void){
 	return analysis_time_taker;
 }
 
+void app_custom_reset_analysis_timer(void){
+	analysis_time_start = 0.0;
+	analysis_time_sample = 0;
+	analysis_time_total = 0.0;
+	analysis_time_average = 0.0;
+}
 
 // Create the custom analysis thread
 static void app_custom_create_analysis_thread(void){
@@ -135,12 +141,13 @@ static THD_FUNCTION(custom_analysis_thread, arg){
 
 		// Take the time elapsed
 		if(analysis_time_taker){
-			float analysis_time_elapsed = timer_seconds_elapsed_since(analysis_time_start)/1000000.0;
-			commands_printf("Time elapsed while NOT active: %lf us", timer_seconds_elapsed_since(analysis_time_elapsed));
+			double analysis_time_elapsed = timer_seconds_elapsed_since(analysis_time_start)/ 1000000000.0;
+			commands_printf("Time elapsed while NOT active: %.12f ns", analysis_time_elapsed);
 			analysis_time_sample++;
 			analysis_time_total = analysis_time_total + analysis_time_elapsed;
 			analysis_time_average = analysis_time_total/analysis_time_sample;
-			commands_printf("Time elapsed while NOT active: %lf us", analysis_time_average);
+			if(analysis_time_sample >= 100) analysis_time_sample = 1;
+			commands_printf("Average time (100 samples): %.12f ns", analysis_time_average);
 		}
 
 		// Read and set the sensor state
