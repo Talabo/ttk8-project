@@ -2,7 +2,7 @@
  * Custom firmware
  *
  * Created by:          Emil Jenssen
- * Last updated:        03.11.2021
+ * Last updated:        09.11.2021
  *
  */
 
@@ -11,11 +11,10 @@
 
 // Variables
 
-// Hall Sensor Pin (COMM PORT: MISO ADC2 pin (PA6))
-// For more info for hardware VESC 6 MkV, see hw_60.c/.h
+// Hall Sensor Pin (COMM PORT: SCK ADC1 pin (PA5)) for HW: VESC 6 MkV (hw_60.c/.h)
 #define CUSTOM_HALL_GPIO		GPIOA
-#define CUSTOM_HALL_PIN			6
-#define CUSTOM_HALL_ADC_INDEX	ADC_IND_EXT2
+#define CUSTOM_HALL_PIN			5
+#define CUSTOM_HALL_ADC_INDEX	ADC_IND_EXT1
 
 // Timer for PA6 (See datasheet for STM32F40xxx, Table 9. Alternate function mapping)
 /*

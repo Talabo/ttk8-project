@@ -2,7 +2,7 @@
  * Custom firmware
  *
  * Created by:          Emil Jenssen
- * Last updated:        03.11.2021
+ * Last updated:        09.11.2021
  *
  */
 
@@ -11,9 +11,9 @@
 
 // Variables
 
-// Indicator Pin (COMM PORT: SCK ADC1 pin (PA5)) for HW: VESC 6 MkV
+// Indicator Pin (COMM PORT: MISO ADC2 pin (PA6)) for HW: VESC 6 MkV (hw_60.c/.h)
 #define CUSTOM_INDICATOR_GPIO	GPIOA
-#define CUSTOM_INDICATOR_PIN	5
+#define CUSTOM_INDICATOR_PIN	6
 
 #define CUSTOM_INDICATOR_ON()  palSetPad(CUSTOM_INDICATOR_GPIO, CUSTOM_INDICATOR_PIN);
 #define CUSTOM_INDICATOR_OFF() palClearPad(CUSTOM_INDICATOR_GPIO, CUSTOM_INDICATOR_PIN);
