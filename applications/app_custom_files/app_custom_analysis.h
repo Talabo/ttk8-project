@@ -51,8 +51,8 @@
 
 
 // Functions
-void app_custom_set_thread_priority(int priority);
-int app_custom_get_thread_priority(void);
+void app_custom_set_thread_priority(tprio_t priority);
+tprio_t app_custom_get_thread_priority(void);
 
 void app_custom_set_analysis_time_taker(bool x);
 bool app_custom_get_tanalysis_time_taker(void);

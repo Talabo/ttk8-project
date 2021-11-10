@@ -22,7 +22,7 @@ static void app_custom_create_analysis_thread(void);
 // Thread variables
 static volatile bool stop_now = true;
 static volatile bool is_running = false;
-static volatile int custom_thread_priority = NORMALPRIO;
+static volatile tprio_t custom_thread_priority = NORMALPRIO;
 
 // Variables
 uint32_t analysis_time_start;
@@ -31,11 +31,11 @@ int analysis_time_sample;
 double analysis_time_total;
 double analysis_time_average;
 
-void app_custom_set_thread_priority(int priority){
+void app_custom_set_thread_priority(tprio_t priority){
 	custom_thread_priority = priority;
 }
 
-int app_custom_get_thread_priority(void){
+tprio_t app_custom_get_thread_priority(void){
 	return custom_thread_priority;
 }
 
@@ -139,9 +139,10 @@ static THD_FUNCTION(custom_analysis_thread, arg){
 
 		// Run the thread logic here //
 
+		// Timer analyser
 		// Take the time elapsed
 		if(analysis_time_taker){
-			double analysis_time_elapsed = timer_seconds_elapsed_since(analysis_time_start)/ 1000000000.0;
+			double analysis_time_elapsed = timer_seconds_elapsed_since(analysis_time_start)/ 1000000000.0; // nanoseconds
 			commands_printf("Time elapsed while NOT active: %.12f ns", analysis_time_elapsed);
 			analysis_time_sample++;
 			analysis_time_total = analysis_time_total + analysis_time_elapsed;
@@ -153,19 +154,18 @@ static THD_FUNCTION(custom_analysis_thread, arg){
 		// Read and set the sensor state
 		app_custom_set_sensor_state(app_custom_read_hall_state());
 
+
+		// Set the indicator status corresponding to the sensor state
 		if(app_custom_get_sensor_state()){
 			CUSTOM_INDICATOR_ON();
 		}else{
 			CUSTOM_INDICATOR_OFF();
 		}
 
-
 		// Continuously plot the experiment plotter
 		custom_experiment_plots();
 
-
-
-
+		// Timer analyser
 		if(analysis_time_taker){
 			// start timer
 			analysis_time_start = timer_time_now();
