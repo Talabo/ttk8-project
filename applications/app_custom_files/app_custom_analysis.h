@@ -2,7 +2,7 @@
  * Custom firmware
  *
  * Created by:          Emil Jenssen
- * Last updated:        09.11.2021
+ * Last updated:        10.11.2021
  *
  */
 
@@ -13,9 +13,6 @@
 #include "app.h"			// Application framework
 #include "ch.h" 			// ChibiOS
 #include "hal.h" 			// ChibiOS HAL
-
-// Microcontroller spesific
-//#include "stm32f4xx_conf.h" // For STM32F4xx, HW: VESC 6 MkV
 
 // Some useful includes
 #include "mc_interface.h" 	// Motor Control functions
@@ -44,6 +41,7 @@
 
 
 // Custom files
+#include "app_custom_hw.h"
 #include "app_custom_plotter.h"
 #include "app_custom_commands.h"
 #include "app_custom_hall_sensor.h"

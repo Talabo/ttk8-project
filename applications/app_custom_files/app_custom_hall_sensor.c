@@ -2,7 +2,7 @@
  * Custom firmware
  *
  * Created by:          Emil Jenssen
- * Last updated:        03.11.2021
+ * Last updated:        10.11.2021
  *
  */
 
@@ -119,6 +119,17 @@ bool app_custom_get_sensor_state(void){
 void app_custom_set_sensor_state(bool x){
 	custom_hall_sensor_state = x;
 }
+
+// Interrupt ReQuest
+CH_IRQ_HANDLER(HW_ENC_EXTI_ISR_VEC) {
+	if (EXTI_GetITStatus(HW_ENC_EXTI_LINE) != RESET) {
+		encoder_reset();
+
+		// Clear the EXTI line pending bit
+		EXTI_ClearITPendingBit(HW_ENC_EXTI_LINE);
+	}
+}
+
 
 
 /*
