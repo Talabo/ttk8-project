@@ -121,6 +121,7 @@ void app_custom_set_sensor_state(bool x){
 }
 
 // Interrupt ReQuest
+/*
 CH_IRQ_HANDLER(HW_ENC_EXTI_ISR_VEC) {
 	if (EXTI_GetITStatus(HW_ENC_EXTI_LINE) != RESET) {
 		encoder_reset();
@@ -129,7 +130,7 @@ CH_IRQ_HANDLER(HW_ENC_EXTI_ISR_VEC) {
 		EXTI_ClearITPendingBit(HW_ENC_EXTI_LINE);
 	}
 }
-
+*/
 
 
 /*

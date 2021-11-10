@@ -2,7 +2,7 @@
  * Custom firmware
  *
  * Created by:          Emil Jenssen
- * Last updated:        03.11.2021
+ * Last updated:        10.11.2021
  *
  */
 
@@ -17,6 +17,8 @@ void app_custom_indicator_init(void){
 	// Set the Indicator pin as a digital output
 	palSetPadMode(CUSTOM_INDICATOR_GPIO, CUSTOM_INDICATOR_PIN,
 			PAL_MODE_OUTPUT_PUSHPULL | PAL_STM32_OSPEED_HIGHEST);
+
+	CUSTOM_INDICATOR_OFF();
 }
 
 // Deinitialize the indicator

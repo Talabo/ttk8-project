@@ -4,7 +4,7 @@
  * This custom app is used for analyzing the RTOS (ChibiOS) system in the VESC firmware.
  *
  * Created by:          Emil Jenssen
- * Last updated:        09.11.2021
+ * Last updated:        10.11.2021
  *
  */
 
@@ -153,11 +153,15 @@ static THD_FUNCTION(custom_analysis_thread, arg){
 		// Read and set the sensor state
 		app_custom_set_sensor_state(app_custom_read_hall_state());
 
+		if(app_custom_get_sensor_state()){
+			CUSTOM_INDICATOR_ON();
+		}else{
+			CUSTOM_INDICATOR_OFF();
+		}
+
 
 		// Continuously plot the experiment plotter
 		custom_experiment_plots();
-
-		// TODO
 
 
 
