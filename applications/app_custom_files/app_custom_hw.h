@@ -2,7 +2,7 @@
  * Custom firmware
  *
  * Created by:          Emil Jenssen
- * Last updated:        11.11.2021
+ * Last updated:        16.11.2021
  *
  * Hardware Specific: VESC 6 MkV (hw_60.c/-.h)
  *
@@ -23,13 +23,6 @@
 #define CUSTOM_INDICATOR2_GPIO	GPIOA
 #define CUSTOM_INDICATOR2_PIN	7
 #define CUSTOM_PA7_DEFAULT      PAL_MODE_INPUT_ANALOG  // Default type from original firmware
-
-
-// Hall Sensor Pin (COMM PORT: SCK ADC1 pin (PA5)) for HW: VESC 6 MkV (hw_60.c/.h)
-//#define CUSTOM_HALL_GPIO		GPIOA
-//#define CUSTOM_HALL_PIN	    5
-//#define CUSTOM_PA5_DEFAULT    PAL_MODE_INPUT_ANALOG  // Default type from original firmware
-
 
 // Hall Sensor Pin (COMM PORT: SDA NSS RX pin (PB11)) for HW: VESC 6 MkV (hw_60.c/.h)
 #define CUSTOM_HALL_GPIO		GPIOB

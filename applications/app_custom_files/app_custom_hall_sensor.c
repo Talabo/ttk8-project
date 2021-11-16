@@ -2,20 +2,16 @@
  * Custom firmware
  *
  * Created by:          Emil Jenssen
- * Last updated:        11.11.2021
+ * Last updated:        16.11.2021
  *
  */
-
 
 #include "app_custom_analysis.h"
 
 
 // Variables
-/*
-static double custom_hall_sensor_val = 0.0;
-static double custom_hall_sensor_val_voltage = 0.0;
-*/
 static bool custom_hall_sensor_state = false;
+
 // Functions
 
 /*
@@ -30,17 +26,8 @@ void app_custom_hall_init(void){
 // SOLUTION #2
 void app_custom_hall_init(void){
 
-	// TODO: Good enough solution to make this a pullup?
 	// Set the Hall Sensor Pin as a (Digital) PULLUP input
 	palSetPadMode(CUSTOM_HALL_GPIO, CUSTOM_HALL_PIN, PAL_MODE_INPUT_PULLUP);
-	/*
-	// Alternative solution?
-	GPIO_InitTypeDef GPIO_InitStructure;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
-	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_;
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_11;
-	GPIO_Init(GPIOB, &GPIO_InitStructure);
-	*/
 
 	// Interrupt on Hall effect sensor (index pulse)
 
@@ -80,29 +67,23 @@ void app_custom_hall_reset(void){
 
 // Reads hall-effect sensor data as digital values
 // PAL_LOW (low state) and PAL_HIGH (high state)
-// Only works if the pin is defined as DIGITAL
 bool app_custom_read_hall_state(void){
 	// Checks if the in corresponds to logic level PAL_HIGH (opposite is PAL_LOW)
 	return (palReadPad(CUSTOM_HALL_GPIO, CUSTOM_HALL_PIN) == PAL_HIGH);
 }
 
-
-// Only works if the pin is defined as DIGITAL
 bool app_custom_get_sensor_state(void){
 	return custom_hall_sensor_state;
 }
 
-// Only works if the pin is defined as DIGITAL
 void app_custom_set_sensor_state(bool x){
 	custom_hall_sensor_state = x;
 }
 
-// SOLUTION #2
+
 // Interrupt ReQuest
 CH_IRQ_HANDLER(HW_CUSTOM_HALL_EXTI_ISR_VEC) {
 	if (EXTI_GetITStatus(HW_CUSTOM_HALL_EXTI_LINE) != RESET) {
-
-		//// Reads the sensor pin and set indicator2 to the same state
 
 		// Read and set the sensor state
 		app_custom_set_sensor_state(app_custom_read_hall_state());

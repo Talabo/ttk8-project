@@ -4,7 +4,7 @@
  * This custom app is used for analyzing the RTOS (ChibiOS) system in the VESC firmware.
  *
  * Created by:          Emil Jenssen
- * Last updated:        10.11.2021
+ * Last updated:        16.11.2021
  *
  */
 
@@ -66,7 +66,7 @@ static void app_custom_create_analysis_thread(void){
 
 // Called when the custom application is started.
 void app_custom_start(void){
-	commands_printf("Custom propeller controller app started");
+	commands_printf("Custom analysis app started");
 
 	// Register all custom commands
 	app_custom_register_commands();
@@ -126,8 +126,6 @@ static THD_FUNCTION(custom_analysis_thread, arg){
 	is_running = true;
 
 	for(;;) {
-
-		//if(custom_get_debug_custom()) commands_printf("CUSTOM start of loop");
 
 		// Check if it is time to stop.
 		if (stop_now) {

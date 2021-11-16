@@ -2,7 +2,7 @@
  * Custom firmware
  *
  * Created by:          Emil Jenssen
- * Last updated:        10.11.2021
+ * Last updated:        16.11.2021
  *
  */
 
@@ -29,7 +29,7 @@ void app_custom_register_commands(void){
 	// Priority
 	terminal_register_command_callback(
 			"custom_get_thread_priority",
-			"Get the thread priority for the custom analysis thread.",
+			"Get the thread priority for the custom analysis thread",
 			0,
 			terminal_custom_get_thread_prority);
 
@@ -57,7 +57,7 @@ void app_custom_register_commands(void){
 	// Updates thread settings by restarting all apps
 	terminal_register_command_callback(
 			"custom_update_thread_settings",
-			"Updates the thread settings by restarting all threads.",
+			"Updates the thread settings by restarting all the application threads",
 			0,
 			terminal_custom_update_thread_settings);
 }
@@ -129,7 +129,6 @@ void terminal_custom_set_LOWPRIO(int argc, const char **argv){
 	commands_printf("The thread priority is set to LOWPRIO");
 }
 
-
 // Sets the thread priority to HIGHPRIO
 void terminal_custom_set_HIGHPRIO(int argc, const char **argv){
 	(void)argc;
@@ -137,8 +136,6 @@ void terminal_custom_set_HIGHPRIO(int argc, const char **argv){
 	app_custom_set_thread_priority(HIGHPRIO);
 	commands_printf("The thread priority is set to HIGHPRIO");
 }
-
-
 
 // Updates the thread settings to the thread, by calling app_set_configuration()
 // app_set_configuration() stops all app threads, starts them and configures them.
